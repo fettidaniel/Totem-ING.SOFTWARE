@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    {% load static %}
+    <div class="container">
+            <div class="row">
+                <form method="POST" action="#" id="formulario">
+                    {% csrf_token %}
+
+                    <div class="form-group" id="nombre">
+                        {{ cliente_form.nombre }}
+                    </div>
+                     
+                    <div class="form-group" id="rut">
+                        {{ cliente_form.rut }}
+                    </div>
+
+                    <div class="form-group" id="ciudad">
+                        {{ cliente_form.ciudad }}
+                    </div>
+
+                    <div class="form-group" id="comuna">
+                        {{ cliente_form.comuna }}
+                    </div>
+
+                    <div class="form-group" id="direccion">
+                        {{ cliente_form.direccion }}
+                    </div>
+
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md">
+
+                            <a href="{% url 'transfer' %}" class="btn btn-primary">Enviar</a>
+                            <input type="reset" class="btn btn-danger" value="Limpiar">
+                            
+                        </div>
+                    </div>
+					
+                </form>
+            </div>
+    </div>
+
+</body>
+</html>

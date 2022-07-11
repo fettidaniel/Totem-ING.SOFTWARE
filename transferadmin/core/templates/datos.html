@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <title>Datos viaje</title>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Numero de transfer</th>
+                    <th>Patente</th>
+                    <th>Horario de salida</th>
+                    <th>Destino del transfer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transfers %}
+                <tr>
+                    <td>{{ t.numero }}</td>
+                    <td>{{ t.patente }}</td>
+                    <td>{{ t.hora }}</td>
+                    {% for cl in clientes %}
+                    <td>{{ cl.direccion }}</td>
+                    {% endfor %}
+                    <td><a href="{% url 'realizado' %}" class="btn btn-success">Confirmar transfer</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'realizado' %}" class="btn btn-danger">Volver</a>  
+    </div>
+</body>
+</html>
